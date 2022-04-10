@@ -1,21 +1,20 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:github_stats_flutter/gql_client.dart';
+import 'package:github_stats_flutter/gql/git_hub_gpq.dart';
 import 'package:github_stats_flutter/model/entities/github_stats/github_stats.dart';
-import 'package:graphql/client.dart';
 
 final githubStatsRepository = Provider(
   (ref) => GithubStatsRepository(
-    githubGraphQLClient: ref.watch(githubGraphQLClient),
+    gitHubGQL: ref.watch(gitHubGQL),
   ),
 );
 
 class GithubStatsRepository {
-  const GithubStatsRepository({required this.githubGraphQLClient});
+  const GithubStatsRepository({required this.gitHubGQL});
 
-  final GraphQLClient githubGraphQLClient;
+  final GitHubGQL gitHubGQL;
 
   Future<GithubStats> getStats() async {
-    final response = await githubGraphQLClient.query(options);
+    final response = gitHubGQL.queryStats;
     return const GithubStats(
       commitsCount: 0,
       issuesCount: 0,
