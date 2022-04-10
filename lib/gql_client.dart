@@ -1,10 +1,12 @@
 import 'package:graphql/client.dart';
 
+import 'consts/env.dart';
+
 GraphQLClient getGithubGraphQLClient() {
   final Link _link = HttpLink(
     'https://api.github.com/graphql',
     defaultHeaders: {
-      'Authorization': 'Bearer ${String.fromEnvironment('API_KEY')}',
+      'Authorization': 'Bearer $apiToken',
     },
   );
 
