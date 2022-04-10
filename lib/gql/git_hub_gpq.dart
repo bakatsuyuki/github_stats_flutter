@@ -26,7 +26,7 @@ class GitHubGQL {
 
   final GraphQLClient graphQLClient;
 
-  Future<Map<String, dynamic>?> get queryStats async =>
+  Future<Map<String, dynamic>?> queryStats() async =>
       (await graphQLClient.query(options)).data;
 }
 

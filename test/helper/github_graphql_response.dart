@@ -1,4 +1,4 @@
-final responseMap = {
+final Map<String, dynamic>? responseMap = <String, dynamic>{
   "__typename": "Query",
   "user": {
     "__typename": "User",
