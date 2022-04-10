@@ -14,12 +14,10 @@ class GithubStatsRepository {
   final GitHubGQL gitHubGQL;
 
   Future<GithubStats> getStats() async {
-    final response = gitHubGQL.queryStats;
-    return const GithubStats(
-      commitsCount: 0,
-      issuesCount: 0,
-      pRsCount: 0,
-      starsCount: 0,
-    );
+    final response = await gitHubGQL.queryStats();
+    if (response == null) {
+      throw NullThrownError;
+    }
+    return GithubStats.fromGQLJson(response);
   }
 }
