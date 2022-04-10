@@ -1,1 +1,0 @@
-const apiToken = String.fromEnvironment('API_KEY');

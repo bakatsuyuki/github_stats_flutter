@@ -16,7 +16,6 @@ class GithubStatsRepository {
 
   Future<GithubStats> getStats() async {
     final response = await githubGraphQLClient.query(options);
-    print(response);
     return const GithubStats(sampleParam: '');
   }
 }

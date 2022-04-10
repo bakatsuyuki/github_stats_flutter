@@ -1,9 +1,9 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:graphql/client.dart';
 
-import 'consts/env.dart';
-
 final githubGraphQLClient = Provider((_) {
+  final apiToken = dotenv.env['API_TOKEN'];
   final Link _link = HttpLink(
     'https://api.github.com/graphql',
     defaultHeaders: {
