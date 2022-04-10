@@ -30,8 +30,8 @@ class MyHomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      body: Center(
+    return Material(
+      child: Center(
         child: ref.watch(gitHubStats).when(
               data: (data) => Text(
                   'Commits: ${data.commitsCount}, PRs: ${data.pRsCount}, Issues: ${data.issuesCount}, Stars: ${data.starsCount}, '),
