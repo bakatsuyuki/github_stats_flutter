@@ -1,8 +1,9 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:graphql/client.dart';
 
 import 'consts/env.dart';
 
-GraphQLClient getGithubGraphQLClient() {
+final githubGraphQLClient = Provider((_) {
   final Link _link = HttpLink(
     'https://api.github.com/graphql',
     defaultHeaders: {
@@ -14,7 +15,7 @@ GraphQLClient getGithubGraphQLClient() {
     cache: GraphQLCache(),
     link: _link,
   );
-}
+});
 
 final QueryOptions options = QueryOptions(
   document: gql(
