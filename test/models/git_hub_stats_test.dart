@@ -1,6 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:github_stats_flutter/gql/git_hub_gpq.dart';
+import 'package:github_stats_flutter/model/entities/github_stats/github_stats.dart';
+import 'package:github_stats_flutter/model/github_stats.dart';
 import 'package:mockito/mockito.dart';
 
 import '../helper/github_graphql_response.dart';
@@ -18,5 +20,18 @@ void main() {
     );
 
     when(_gitHubGQL.queryStats()).thenAnswer((_) async => responseMap);
+  });
+
+  test('gitHubStats', () async {
+    final target = await _container.read(gitHubStats.future);
+    expect(
+      target,
+      const GithubStats(
+        starsCount: 0,
+        commitsCount: 2005,
+        pRsCount: 180,
+        issuesCount: 3,
+      ),
+    );
   });
 }
