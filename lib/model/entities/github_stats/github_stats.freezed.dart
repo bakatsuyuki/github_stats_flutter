@@ -15,15 +15,15 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$GithubStatsTearOff {
-  const _$GithubStatsTearOff();
+class _$GitHubStatsTearOff {
+  const _$GitHubStatsTearOff();
 
-  _GithubStats call(
+  _GitHubStats call(
       {required int starsCount,
       required int commitsCount,
       required int pRsCount,
       required int issuesCount}) {
-    return _GithubStats(
+    return _GitHubStats(
       starsCount: starsCount,
       commitsCount: commitsCount,
       pRsCount: pRsCount,
@@ -33,35 +33,35 @@ class _$GithubStatsTearOff {
 }
 
 /// @nodoc
-const $GithubStats = _$GithubStatsTearOff();
+const $GitHubStats = _$GitHubStatsTearOff();
 
 /// @nodoc
-mixin _$GithubStats {
+mixin _$GitHubStats {
   int get starsCount => throw _privateConstructorUsedError;
   int get commitsCount => throw _privateConstructorUsedError;
   int get pRsCount => throw _privateConstructorUsedError;
   int get issuesCount => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $GithubStatsCopyWith<GithubStats> get copyWith =>
+  $GitHubStatsCopyWith<GitHubStats> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $GithubStatsCopyWith<$Res> {
-  factory $GithubStatsCopyWith(
-          GithubStats value, $Res Function(GithubStats) then) =
-      _$GithubStatsCopyWithImpl<$Res>;
+abstract class $GitHubStatsCopyWith<$Res> {
+  factory $GitHubStatsCopyWith(
+          GitHubStats value, $Res Function(GitHubStats) then) =
+      _$GitHubStatsCopyWithImpl<$Res>;
   $Res call({int starsCount, int commitsCount, int pRsCount, int issuesCount});
 }
 
 /// @nodoc
-class _$GithubStatsCopyWithImpl<$Res> implements $GithubStatsCopyWith<$Res> {
-  _$GithubStatsCopyWithImpl(this._value, this._then);
+class _$GitHubStatsCopyWithImpl<$Res> implements $GitHubStatsCopyWith<$Res> {
+  _$GitHubStatsCopyWithImpl(this._value, this._then);
 
-  final GithubStats _value;
+  final GitHubStats _value;
   // ignore: unused_field
-  final $Res Function(GithubStats) _then;
+  final $Res Function(GitHubStats) _then;
 
   @override
   $Res call({
@@ -92,24 +92,24 @@ class _$GithubStatsCopyWithImpl<$Res> implements $GithubStatsCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$GithubStatsCopyWith<$Res>
-    implements $GithubStatsCopyWith<$Res> {
-  factory _$GithubStatsCopyWith(
-          _GithubStats value, $Res Function(_GithubStats) then) =
-      __$GithubStatsCopyWithImpl<$Res>;
+abstract class _$GitHubStatsCopyWith<$Res>
+    implements $GitHubStatsCopyWith<$Res> {
+  factory _$GitHubStatsCopyWith(
+          _GitHubStats value, $Res Function(_GitHubStats) then) =
+      __$GitHubStatsCopyWithImpl<$Res>;
   @override
   $Res call({int starsCount, int commitsCount, int pRsCount, int issuesCount});
 }
 
 /// @nodoc
-class __$GithubStatsCopyWithImpl<$Res> extends _$GithubStatsCopyWithImpl<$Res>
-    implements _$GithubStatsCopyWith<$Res> {
-  __$GithubStatsCopyWithImpl(
-      _GithubStats _value, $Res Function(_GithubStats) _then)
-      : super(_value, (v) => _then(v as _GithubStats));
+class __$GitHubStatsCopyWithImpl<$Res> extends _$GitHubStatsCopyWithImpl<$Res>
+    implements _$GitHubStatsCopyWith<$Res> {
+  __$GitHubStatsCopyWithImpl(
+      _GitHubStats _value, $Res Function(_GitHubStats) _then)
+      : super(_value, (v) => _then(v as _GitHubStats));
 
   @override
-  _GithubStats get _value => super._value as _GithubStats;
+  _GitHubStats get _value => super._value as _GitHubStats;
 
   @override
   $Res call({
@@ -118,7 +118,7 @@ class __$GithubStatsCopyWithImpl<$Res> extends _$GithubStatsCopyWithImpl<$Res>
     Object? pRsCount = freezed,
     Object? issuesCount = freezed,
   }) {
-    return _then(_GithubStats(
+    return _then(_GitHubStats(
       starsCount: starsCount == freezed
           ? _value.starsCount
           : starsCount // ignore: cast_nullable_to_non_nullable
@@ -141,8 +141,8 @@ class __$GithubStatsCopyWithImpl<$Res> extends _$GithubStatsCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GithubStats implements _GithubStats {
-  const _$_GithubStats(
+class _$_GitHubStats implements _GitHubStats {
+  const _$_GitHubStats(
       {required this.starsCount,
       required this.commitsCount,
       required this.pRsCount,
@@ -159,14 +159,14 @@ class _$_GithubStats implements _GithubStats {
 
   @override
   String toString() {
-    return 'GithubStats(starsCount: $starsCount, commitsCount: $commitsCount, pRsCount: $pRsCount, issuesCount: $issuesCount)';
+    return 'GitHubStats(starsCount: $starsCount, commitsCount: $commitsCount, pRsCount: $pRsCount, issuesCount: $issuesCount)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _GithubStats &&
+            other is _GitHubStats &&
             const DeepCollectionEquality()
                 .equals(other.starsCount, starsCount) &&
             const DeepCollectionEquality()
@@ -186,16 +186,16 @@ class _$_GithubStats implements _GithubStats {
 
   @JsonKey(ignore: true)
   @override
-  _$GithubStatsCopyWith<_GithubStats> get copyWith =>
-      __$GithubStatsCopyWithImpl<_GithubStats>(this, _$identity);
+  _$GitHubStatsCopyWith<_GitHubStats> get copyWith =>
+      __$GitHubStatsCopyWithImpl<_GitHubStats>(this, _$identity);
 }
 
-abstract class _GithubStats implements GithubStats {
-  const factory _GithubStats(
+abstract class _GitHubStats implements GitHubStats {
+  const factory _GitHubStats(
       {required int starsCount,
       required int commitsCount,
       required int pRsCount,
-      required int issuesCount}) = _$_GithubStats;
+      required int issuesCount}) = _$_GitHubStats;
 
   @override
   int get starsCount;
@@ -207,6 +207,6 @@ abstract class _GithubStats implements GithubStats {
   int get issuesCount;
   @override
   @JsonKey(ignore: true)
-  _$GithubStatsCopyWith<_GithubStats> get copyWith =>
+  _$GitHubStatsCopyWith<_GitHubStats> get copyWith =>
       throw _privateConstructorUsedError;
 }

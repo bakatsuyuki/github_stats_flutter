@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:github_stats_flutter/gql/git_hub_gpq.dart';
+import 'package:github_stats_flutter/gql/github_gpq.dart';
 import 'package:github_stats_flutter/model/entities/github_stats/github_stats.dart';
 import 'package:github_stats_flutter/model/github_stats.dart';
 import 'package:mockito/mockito.dart';
@@ -26,7 +26,7 @@ void main() {
     final target = await _container.read(gitHubStats.future);
     expect(
       target,
-      const GithubStats(
+      const GitHubStats(
         starsCount: 1,
         commitsCount: 2005,
         pRsCount: 180,

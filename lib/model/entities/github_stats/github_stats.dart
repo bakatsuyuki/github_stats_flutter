@@ -3,11 +3,11 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'github_stats.freezed.dart';
 
 @freezed
-abstract class GithubStats with _$GithubStats {
-  const factory GithubStats({
+abstract class GitHubStats with _$GitHubStats {
+  const factory GitHubStats({
     required int starsCount,
     required int commitsCount,
     required int pRsCount,
     required int issuesCount,
-  }) = _GithubStats;
+  }) = _GitHubStats;
 }
