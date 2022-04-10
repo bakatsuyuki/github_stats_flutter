@@ -18,9 +18,16 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$GithubStatsTearOff {
   const _$GithubStatsTearOff();
 
-  _GithubStats call({required String sampleParam}) {
+  _GithubStats call(
+      {required int starsCount,
+      required int commitsCount,
+      required int pRsCount,
+      required int issuesCount}) {
     return _GithubStats(
-      sampleParam: sampleParam,
+      starsCount: starsCount,
+      commitsCount: commitsCount,
+      pRsCount: pRsCount,
+      issuesCount: issuesCount,
     );
   }
 }
@@ -30,7 +37,10 @@ const $GithubStats = _$GithubStatsTearOff();
 
 /// @nodoc
 mixin _$GithubStats {
-  String get sampleParam => throw _privateConstructorUsedError;
+  int get starsCount => throw _privateConstructorUsedError;
+  int get commitsCount => throw _privateConstructorUsedError;
+  int get pRsCount => throw _privateConstructorUsedError;
+  int get issuesCount => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GithubStatsCopyWith<GithubStats> get copyWith =>
@@ -42,7 +52,7 @@ abstract class $GithubStatsCopyWith<$Res> {
   factory $GithubStatsCopyWith(
           GithubStats value, $Res Function(GithubStats) then) =
       _$GithubStatsCopyWithImpl<$Res>;
-  $Res call({String sampleParam});
+  $Res call({int starsCount, int commitsCount, int pRsCount, int issuesCount});
 }
 
 /// @nodoc
@@ -55,13 +65,28 @@ class _$GithubStatsCopyWithImpl<$Res> implements $GithubStatsCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? sampleParam = freezed,
+    Object? starsCount = freezed,
+    Object? commitsCount = freezed,
+    Object? pRsCount = freezed,
+    Object? issuesCount = freezed,
   }) {
     return _then(_value.copyWith(
-      sampleParam: sampleParam == freezed
-          ? _value.sampleParam
-          : sampleParam // ignore: cast_nullable_to_non_nullable
-              as String,
+      starsCount: starsCount == freezed
+          ? _value.starsCount
+          : starsCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      commitsCount: commitsCount == freezed
+          ? _value.commitsCount
+          : commitsCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      pRsCount: pRsCount == freezed
+          ? _value.pRsCount
+          : pRsCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      issuesCount: issuesCount == freezed
+          ? _value.issuesCount
+          : issuesCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -73,7 +98,7 @@ abstract class _$GithubStatsCopyWith<$Res>
           _GithubStats value, $Res Function(_GithubStats) then) =
       __$GithubStatsCopyWithImpl<$Res>;
   @override
-  $Res call({String sampleParam});
+  $Res call({int starsCount, int commitsCount, int pRsCount, int issuesCount});
 }
 
 /// @nodoc
@@ -88,13 +113,28 @@ class __$GithubStatsCopyWithImpl<$Res> extends _$GithubStatsCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? sampleParam = freezed,
+    Object? starsCount = freezed,
+    Object? commitsCount = freezed,
+    Object? pRsCount = freezed,
+    Object? issuesCount = freezed,
   }) {
     return _then(_GithubStats(
-      sampleParam: sampleParam == freezed
-          ? _value.sampleParam
-          : sampleParam // ignore: cast_nullable_to_non_nullable
-              as String,
+      starsCount: starsCount == freezed
+          ? _value.starsCount
+          : starsCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      commitsCount: commitsCount == freezed
+          ? _value.commitsCount
+          : commitsCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      pRsCount: pRsCount == freezed
+          ? _value.pRsCount
+          : pRsCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      issuesCount: issuesCount == freezed
+          ? _value.issuesCount
+          : issuesCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -102,14 +142,24 @@ class __$GithubStatsCopyWithImpl<$Res> extends _$GithubStatsCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_GithubStats implements _GithubStats {
-  const _$_GithubStats({required this.sampleParam});
+  const _$_GithubStats(
+      {required this.starsCount,
+      required this.commitsCount,
+      required this.pRsCount,
+      required this.issuesCount});
 
   @override
-  final String sampleParam;
+  final int starsCount;
+  @override
+  final int commitsCount;
+  @override
+  final int pRsCount;
+  @override
+  final int issuesCount;
 
   @override
   String toString() {
-    return 'GithubStats(sampleParam: $sampleParam)';
+    return 'GithubStats(starsCount: $starsCount, commitsCount: $commitsCount, pRsCount: $pRsCount, issuesCount: $issuesCount)';
   }
 
   @override
@@ -118,12 +168,21 @@ class _$_GithubStats implements _GithubStats {
         (other.runtimeType == runtimeType &&
             other is _GithubStats &&
             const DeepCollectionEquality()
-                .equals(other.sampleParam, sampleParam));
+                .equals(other.starsCount, starsCount) &&
+            const DeepCollectionEquality()
+                .equals(other.commitsCount, commitsCount) &&
+            const DeepCollectionEquality().equals(other.pRsCount, pRsCount) &&
+            const DeepCollectionEquality()
+                .equals(other.issuesCount, issuesCount));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(sampleParam));
+      runtimeType,
+      const DeepCollectionEquality().hash(starsCount),
+      const DeepCollectionEquality().hash(commitsCount),
+      const DeepCollectionEquality().hash(pRsCount),
+      const DeepCollectionEquality().hash(issuesCount));
 
   @JsonKey(ignore: true)
   @override
@@ -132,10 +191,20 @@ class _$_GithubStats implements _GithubStats {
 }
 
 abstract class _GithubStats implements GithubStats {
-  const factory _GithubStats({required String sampleParam}) = _$_GithubStats;
+  const factory _GithubStats(
+      {required int starsCount,
+      required int commitsCount,
+      required int pRsCount,
+      required int issuesCount}) = _$_GithubStats;
 
   @override
-  String get sampleParam;
+  int get starsCount;
+  @override
+  int get commitsCount;
+  @override
+  int get pRsCount;
+  @override
+  int get issuesCount;
   @override
   @JsonKey(ignore: true)
   _$GithubStatsCopyWith<_GithubStats> get copyWith =>

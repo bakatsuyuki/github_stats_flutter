@@ -16,6 +16,11 @@ class GithubStatsRepository {
 
   Future<GithubStats> getStats() async {
     final response = await githubGraphQLClient.query(options);
-    return const GithubStats(sampleParam: '');
+    return const GithubStats(
+      commitsCount: 0,
+      issuesCount: 0,
+      pRsCount: 0,
+      starsCount: 0,
+    );
   }
 }

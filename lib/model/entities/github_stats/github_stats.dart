@@ -5,6 +5,9 @@ part 'github_stats.freezed.dart';
 @freezed
 abstract class GithubStats with _$GithubStats {
   const factory GithubStats({
-    required String sampleParam,
+    required int starsCount,
+    required int commitsCount,
+    required int pRsCount,
+    required int issuesCount,
   }) = _GithubStats;
 }
