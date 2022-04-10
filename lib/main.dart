@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:github_stats_flutter/repositories/github_stats_repository.dart';
+import 'package:github_stats_flutter/model/github_stats.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: ".env");
@@ -30,20 +30,14 @@ class MyHomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(githubStatsRepository).getStats();
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Text(
-              'You have pushed the button this many times:',
+        child: ref.watch(gitHubStats).when(
+              data: (data) => Text(
+                  'Commits: ${data.commitsCount}, PRs: ${data.pRsCount}, Issues: ${data.issuesCount}, Stars: ${data.starsCount}, '),
+              error: (_, __) => const Text('Sorry, some error occurred.'),
+              loading: () => const CircularProgressIndicator(),
             ),
-          ],
-        ),
       ),
     );
   }
