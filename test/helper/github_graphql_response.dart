@@ -23,7 +23,7 @@ final Map<String, dynamic>? responseMap = <String, dynamic>{
       "nodes": [
         {
           "__typename": "Repository",
-          "stargazers": {"__typename": "StargazerConnection", "totalCount": 0}
+          "stargazers": {"__typename": "StargazerConnection", "totalCount": 1}
         },
         {
           "__typename": "Repository",

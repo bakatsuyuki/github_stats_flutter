@@ -27,7 +27,7 @@ void main() {
     expect(
       target,
       const GithubStats(
-        starsCount: 0,
+        starsCount: 1,
         commitsCount: 2005,
         pRsCount: 180,
         issuesCount: 3,
