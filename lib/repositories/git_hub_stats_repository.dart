@@ -27,8 +27,7 @@ class GithubStatsRepository {
         user['contributionsCollection']?['totalCommitContributions'] as int?;
     final openIssuesCount = user['openIssues']?['totalCount'] as int?;
     final closedIssuesCount = user['closedIssues']?['totalCount'] as int?;
-    final repositoriesNodes =
-        user['repositories']?['nodes'] as List<Map<String, dynamic>>?;
+    final repositoriesNodes = user['repositories']?['nodes'];
     final starCounts =
         repositoriesNodes?.map((e) => e['stargazers']['totalCount'] as int);
     return GithubStats(
