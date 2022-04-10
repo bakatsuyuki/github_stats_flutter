@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:github_stats_flutter/model/github_stats.dart';
 
 Future<void> main() async {
-  await dotenv.load(fileName: ".env");
+  await dotenv.load(fileName: "production.env");
   runApp(const ProviderScope(child: MyApp()));
 }
 
