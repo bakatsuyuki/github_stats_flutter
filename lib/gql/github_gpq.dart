@@ -1,4 +1,3 @@
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:graphql/client.dart';
 
@@ -7,7 +6,7 @@ final gitHubGQL = Provider((ref) {
 });
 
 final _githubGraphQLClient = Provider((_) {
-  final apiToken = dotenv.env['API_TOKEN'];
+  const apiToken = String.fromEnvironment('API_TOKEN');
   final Link _link = HttpLink(
     'https://api.github.com/graphql',
     defaultHeaders: {
@@ -26,8 +25,11 @@ class GitHubGQL {
 
   final GraphQLClient graphQLClient;
 
-  Future<Map<String, dynamic>?> queryStats() async =>
-      (await graphQLClient.query(options)).data;
+  Future<Map<String, dynamic>?> queryStats() async {
+    final response = await graphQLClient.query(options);
+    print(response.exception);
+    return response.data;
+  }
 }
 
 final QueryOptions options = QueryOptions(
