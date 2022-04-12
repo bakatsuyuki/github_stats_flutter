@@ -2,4 +2,4 @@
 
 **In Progress**
 
-It's for displaying GitHub stats in the README.md.
+It's a product for displaying GitHub stats in the README.md developed with Flutter.
