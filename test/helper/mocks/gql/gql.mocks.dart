@@ -4,8 +4,8 @@
 
 import 'dart:async' as _i4;
 
+import 'package:github_stats_flutter/api.dart' as _i2;
 import 'package:github_stats_flutter/gql/github_gpq.dart' as _i3;
-import 'package:graphql/client.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -18,7 +18,7 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 
-class _FakeGraphQLClient_0 extends _i1.Fake implements _i2.GraphQLClient {}
+class _FakeApi_0 extends _i1.Fake implements _i2.Api {}
 
 /// A class which mocks [GitHubGQL].
 ///
@@ -29,9 +29,9 @@ class MockGitHubGQL extends _i1.Mock implements _i3.GitHubGQL {
   }
 
   @override
-  _i2.GraphQLClient get graphQLClient =>
-      (super.noSuchMethod(Invocation.getter(#graphQLClient),
-          returnValue: _FakeGraphQLClient_0()) as _i2.GraphQLClient);
+  _i2.Api get api =>
+      (super.noSuchMethod(Invocation.getter(#api), returnValue: _FakeApi_0())
+          as _i2.Api);
   @override
   _i4.Future<Map<String, dynamic>?> queryStats() =>
       (super.noSuchMethod(Invocation.method(#queryStats, []),

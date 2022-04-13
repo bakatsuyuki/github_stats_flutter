@@ -1,4 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:github_stats_flutter/api.dart';
+import 'package:github_stats_flutter/model/entities/gthub_auth/github_auth.dart';
 import 'package:graphql/client.dart';
 
 final gitHubGQL = Provider((_) => const GitHubGQL());
@@ -6,12 +8,16 @@ final gitHubGQL = Provider((_) => const GitHubGQL());
 class GitHubGQL {
   const GitHubGQL();
 
-  Future<Map<String, dynamic>?> queryStats(String token) async {
-    final response = await _getClient(token).query(options);
+  final Api api = const Api();
+
+  Future<Map<String, dynamic>?> queryStats() async {
+    final client = await _getClient();
+    final response = await client.query(options);
     return response.data;
   }
 
-  GraphQLClient _getClient(String token) {
+  Future<GraphQLClient> _getClient() async {
+    final token = await _getToken();
     final Link _link = HttpLink(
       'https://api.github.com/graphql',
       defaultHeaders: {
@@ -23,6 +29,12 @@ class GitHubGQL {
       cache: GraphQLCache(),
       link: _link,
     );
+  }
+
+  Future<String> _getToken() async {
+    final response = await api.getGitHubToken();
+    final auth = GitHubAuth.fromJsonString(response.body);
+    return auth.token;
   }
 }
 
