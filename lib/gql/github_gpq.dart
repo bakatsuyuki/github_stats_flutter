@@ -1,34 +1,28 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:graphql/client.dart';
 
-final gitHubGQL = Provider((ref) {
-  return GitHubGQL(graphQLClient: ref.watch(_githubGraphQLClient));
-});
-
-final _githubGraphQLClient = Provider((_) {
-  const apiToken = String.fromEnvironment('API_TOKEN');
-  final Link _link = HttpLink(
-    'https://api.github.com/graphql',
-    defaultHeaders: {
-      'Authorization': 'Bearer $apiToken',
-    },
-  );
-
-  return GraphQLClient(
-    cache: GraphQLCache(),
-    link: _link,
-  );
-});
+final gitHubGQL = Provider((_) => const GitHubGQL());
 
 class GitHubGQL {
-  const GitHubGQL({required this.graphQLClient});
+  const GitHubGQL();
 
-  final GraphQLClient graphQLClient;
-
-  Future<Map<String, dynamic>?> queryStats() async {
-    final response = await graphQLClient.query(options);
-    print(response.exception);
+  Future<Map<String, dynamic>?> queryStats(String token) async {
+    final response = await _getClient(token).query(options);
     return response.data;
+  }
+
+  GraphQLClient _getClient(String token) {
+    final Link _link = HttpLink(
+      'https://api.github.com/graphql',
+      defaultHeaders: {
+        'Authorization': 'Bearer $token',
+      },
+    );
+
+    return GraphQLClient(
+      cache: GraphQLCache(),
+      link: _link,
+    );
   }
 }
 

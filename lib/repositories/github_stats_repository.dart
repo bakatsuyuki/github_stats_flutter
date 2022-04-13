@@ -1,20 +1,27 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:github_stats_flutter/gql/github_gpq.dart';
 import 'package:github_stats_flutter/model/entities/github_stats/github_stats.dart';
+import 'package:github_stats_flutter/repositories/github_auth_repository.dart';
 
 final githubStatsRepository = Provider(
   (ref) => GithubStatsRepository(
     gitHubGQL: ref.watch(gitHubGQL),
+    authRepository: ref.watch(gitHubAuthRepository),
   ),
 );
 
 class GithubStatsRepository {
-  const GithubStatsRepository({required this.gitHubGQL});
+  const GithubStatsRepository({
+    required this.gitHubGQL,
+    required this.authRepository,
+  });
 
   final GitHubGQL gitHubGQL;
+  final GitHubAuthRepository authRepository;
 
   Future<GitHubStats> getStats() async {
-    final response = await gitHubGQL.queryStats();
+    final token = await authRepository.getToken();
+    final response = await gitHubGQL.queryStats(token);
     if (response == null) {
       throw NullThrownError;
     }

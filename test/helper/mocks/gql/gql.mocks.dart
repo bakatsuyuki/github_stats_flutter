@@ -32,7 +32,6 @@ class MockGitHubGQL extends _i1.Mock implements _i3.GitHubGQL {
   _i2.GraphQLClient get graphQLClient =>
       (super.noSuchMethod(Invocation.getter(#graphQLClient),
           returnValue: _FakeGraphQLClient_0()) as _i2.GraphQLClient);
-
   @override
   _i4.Future<Map<String, dynamic>?> queryStats() =>
       (super.noSuchMethod(Invocation.method(#queryStats, []),
