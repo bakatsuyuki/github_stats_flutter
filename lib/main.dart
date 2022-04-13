@@ -32,7 +32,11 @@ class MyHomePage extends ConsumerWidget {
       child: Center(
         child: ref.watch(gitHubStats).when(
               data: (data) => Text(
-                  'Commits: ${data.commitsCount}, PRs: ${data.pRsCount}, Issues: ${data.issuesCount}, Stars: ${data.starsCount}, '),
+                'Commits: ${data.commitsCount}\n'
+                'PRs: ${data.pRsCount}\n'
+                'Issues: ${data.issuesCount}\n'
+                'Stars: ${data.starsCount}\n',
+              ),
               error: (_, __) => const Text('Sorry, some error occurred.'),
               loading: () => const CircularProgressIndicator(),
             ),
