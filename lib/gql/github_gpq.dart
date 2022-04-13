@@ -1,7 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:github_stats_flutter/api.dart';
+import 'package:github_stats_flutter/const/queries.dart';
 import 'package:github_stats_flutter/model/entities/gthub_auth/github_auth.dart';
 import 'package:graphql/client.dart';
+
+import '../const/urls.dart';
 
 final gitHubGQL = Provider((_) => const GitHubGQL());
 
@@ -17,17 +20,9 @@ class GitHubGQL {
   }
 
   Future<GraphQLClient> _getClient() async {
-    final token = await _getToken();
-    final Link _link = HttpLink(
-      'https://api.github.com/graphql',
-      defaultHeaders: {
-        'Authorization': 'Bearer $token',
-      },
-    );
-
     return GraphQLClient(
       cache: GraphQLCache(),
-      link: _link,
+      link: await _createLink(),
     );
   }
 
@@ -36,46 +31,20 @@ class GitHubGQL {
     final auth = GitHubAuth.fromJsonString(response.body);
     return auth.token;
   }
+
+  Future<Link> _createLink() async {
+    final token = await _getToken();
+    return HttpLink(
+      Urls.gitHubGQL,
+      defaultHeaders: {
+        'Authorization': 'Bearer $token',
+      },
+    );
+  }
 }
 
 final QueryOptions options = QueryOptions(
-  document: gql(
-    r'''
-        query userInfo($login: String!) {
-        user(login: $login) {
-          name
-          login
-          contributionsCollection {
-            totalCommitContributions
-            restrictedContributionsCount
-          }
-          repositoriesContributedTo(first: 1, contributionTypes: [COMMIT, ISSUE, PULL_REQUEST, REPOSITORY]) {
-            totalCount
-          }
-          pullRequests(first: 1) {
-            totalCount
-          }
-          openIssues: issues(states: OPEN) {
-            totalCount
-          }
-          closedIssues: issues(states: CLOSED) {
-            totalCount
-          }
-          followers {
-            totalCount
-          }
-          repositories(first: 100, ownerAffiliations: OWNER, orderBy: {direction: DESC, field: STARGAZERS}) {
-            totalCount
-            nodes {
-              stargazers {
-                totalCount
-              }
-            }
-          }
-        }
-      }
-      ''',
-  ),
+  document: gql(Queries.stats),
   variables: const {
     'login': 'bakatsuyuki',
   },
