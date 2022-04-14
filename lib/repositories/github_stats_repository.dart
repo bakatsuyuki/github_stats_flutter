@@ -25,8 +25,8 @@ class GithubStatsRepository {
 
   GitHubStats gitHubStatsFromResponse(Map<String, dynamic> json) {
     final user = json['user'];
-    final commitsCount =
-        user['contributionsCollection']?['totalCommitContributions'] as int?;
+    final commitsCount = user['contributionsCollection']
+        ?['restrictedContributionsCount'] as int?;
     final openIssuesCount = user['openIssues']?['totalCount'] as int?;
     final closedIssuesCount = user['closedIssues']?['totalCount'] as int?;
     final repositoriesNodes = user['repositories']?['nodes'];

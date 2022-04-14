@@ -52,7 +52,7 @@ class _Stats extends StatelessWidget {
   @override
   Widget build(BuildContext context) => SizedBox(
         height: 120,
-        width: 120,
+        width: 140,
         child: Column(
           children: [
             _SingleStatus('Commits:', gitHubStats.commitsCount),

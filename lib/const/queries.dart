@@ -1,6 +1,6 @@
 class Queries {
   static const String stats = r'''
-        query userInfo($login: String!) {
+      query userInfo($login: String!) {
         user(login: $login) {
           name
           login
