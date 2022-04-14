@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:github_stats_flutter/model/entities/github_stats/github_stats.dart';
 import 'package:github_stats_flutter/model/github_stats.dart';
 
 Future<void> main() async {
@@ -32,23 +33,35 @@ class MyHomePage extends ConsumerWidget {
     return Material(
       child: Center(
           child: ref.watch(gitHubStats).when(
-                data: (data) => SizedBox(
-                  height: 120,
-                  width: 120,
-                  child: Column(
-                    children: [
-                      _SingleStatus('Commits:', data.commitsCount),
-                      _SingleStatus('PRs:', data.pRsCount),
-                      _SingleStatus('Issues:', data.issuesCount),
-                      _SingleStatus('Stars:', data.starsCount),
-                    ],
-                  ),
-                ),
+                data: (data) => _Stats(gitHubStats: data),
                 error: (_, __) => const Text('Sorry, some error occurred.'),
                 loading: () => const CircularProgressIndicator(),
               )),
     );
   }
+}
+
+class _Stats extends StatelessWidget {
+  const _Stats({
+    Key? key,
+    required this.gitHubStats,
+  }) : super(key: key);
+
+  final GitHubStats gitHubStats;
+
+  @override
+  Widget build(BuildContext context) => SizedBox(
+        height: 120,
+        width: 120,
+        child: Column(
+          children: [
+            _SingleStatus('Commits:', gitHubStats.commitsCount),
+            _SingleStatus('PRs:', gitHubStats.pRsCount),
+            _SingleStatus('Issues:', gitHubStats.issuesCount),
+            _SingleStatus('Stars:', gitHubStats.starsCount),
+          ],
+        ),
+      );
 }
 
 class _SingleStatus extends StatelessWidget {
