@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        fontFamily: 'marukiya',
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -30,17 +31,40 @@ class MyHomePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Material(
       child: Center(
-        child: ref.watch(gitHubStats).when(
-              data: (data) => Text(
-                'Commits: ${data.commitsCount}\n'
-                'PRs: ${data.pRsCount}\n'
-                'Issues: ${data.issuesCount}\n'
-                'Stars: ${data.starsCount}\n',
-              ),
-              error: (_, __) => const Text('Sorry, some error occurred.'),
-              loading: () => const CircularProgressIndicator(),
-            ),
-      ),
+          child: ref.watch(gitHubStats).when(
+                data: (data) => SizedBox(
+                  height: 120,
+                  width: 120,
+                  child: Column(
+                    children: [
+                      _SingleStatus('Commits:', data.commitsCount),
+                      _SingleStatus('PRs:', data.pRsCount),
+                      _SingleStatus('Issues:', data.issuesCount),
+                      _SingleStatus('Stars:', data.starsCount),
+                    ],
+                  ),
+                ),
+                error: (_, __) => const Text('Sorry, some error occurred.'),
+                loading: () => const CircularProgressIndicator(),
+              )),
+    );
+  }
+}
+
+class _SingleStatus extends StatelessWidget {
+  const _SingleStatus(
+    this.label,
+    this.value, {
+    Key? key,
+  }) : super(key: key);
+
+  final String label;
+  final int value;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [Expanded(child: Text(label)), Text(value.toString())],
     );
   }
 }

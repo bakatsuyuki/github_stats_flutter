@@ -26,3 +26,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  fonts:
+    - family: marukiya
+      fonts:
+        - asset: fonts/marukiya.ttf
